@@ -510,7 +510,7 @@ dataset_seurat <- function(seurat_obj, count_assay, cell_id_col, cell_type_col, 
 
   tryCatch(
     {
-      count_matrix <- seurat_obj@assays[[count_assay]]@counts
+      count_matrix <- seurat_obj@assays[[count_assay]]$counts
     },
     error = function(e) {
       em <- paste("Could not access count matrix from Seurat object (counts): ", e)
@@ -523,7 +523,7 @@ dataset_seurat <- function(seurat_obj, count_assay, cell_id_col, cell_type_col, 
   if (!is.null(tpm_assay)) {
     tryCatch(
       {
-        tpm_matrix <- seurat_obj@assays[[tpm_assay]]@counts
+        tpm_matrix <- seurat_obj@assays[[tpm_assay]]$counts
       },
       error = function(e) {
         em <- paste("Could not access count matrix from Seurat object (tpm): ", e)
